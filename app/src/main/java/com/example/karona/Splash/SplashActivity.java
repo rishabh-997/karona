@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.karona.HomeScreen.HomeActivity;
+import com.example.karona.HomeScreen.MVP.HomeActivity;
 import com.example.karona.R;
 
 public class SplashActivity extends AppCompatActivity {

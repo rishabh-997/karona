@@ -22,7 +22,7 @@
         </activity>
 
 
-        <activity android:name=".HomeScreen.HomeActivity"
+        <activity android:name=".HomeScreen.MVP.HomeActivity"
             android:label="Home"/>
         <activity android:name=".Essential.MVP.EssentialActivity"
             android:label="Essentials"/>
