@@ -17,13 +17,13 @@ public class MainSliderAdapter extends SliderAdapter {
     public void onBindImageSlide(int position, ImageSlideViewHolder viewHolder) {
         switch (position) {
             case 0:
-                viewHolder.bindImageSlide(R.mipmap.ic_launcher);
+                viewHolder.bindImageSlide(R.mipmap.slider1);
                 break;
             case 1:
-                viewHolder.bindImageSlide(R.mipmap.ic_launcher);
+                viewHolder.bindImageSlide(R.mipmap.slider2);
                 break;
             case 2:
-                viewHolder.bindImageSlide(R.mipmap.ic_launcher);
+                viewHolder.bindImageSlide(R.mipmap.slider3);
                 break;
         }
     }

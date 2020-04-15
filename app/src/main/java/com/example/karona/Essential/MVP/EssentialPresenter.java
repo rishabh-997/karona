@@ -52,8 +52,8 @@ public class EssentialPresenter implements EssentialContract.presenter {
                         if (repeats)
                             categories.add(essentialLists.get(i).getCategory());
                     }
-
-                    mvpview.showToast(states.size() + "," + categories.size());
+                    mvpview.setUpList(essentialLists);
+                    mvpview.setUpSpinner(states, categories);
                 } else {
                     mvpview.showToast(response.message());
                 }

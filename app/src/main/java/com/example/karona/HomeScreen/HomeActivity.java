@@ -33,5 +33,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, EssentialActivity.class));
             }
         });
+
+        binding.travel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, EssentialActivity.class));
+            }
+        });
     }
 }
