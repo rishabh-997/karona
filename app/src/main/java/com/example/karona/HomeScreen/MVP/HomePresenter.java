@@ -33,11 +33,14 @@ public class HomePresenter implements HomeContract.presenter
                 if(response.isSuccessful()){
                     travelLists = response.body().getTravelList();
                     for(int i = 0;i<travelLists.size();i++ ){
-                        String latlong = travelLists.get(i).getCordinates();
-                        int comma = latlong.indexOf(",");
-                        String lat = latlong.substring(0,comma);
-                        String lon = latlong.substring(comma+1);
-                        coordinates.add(new Coordinates(Double.valueOf(lat),Double.valueOf(lon)));
+                        String latlong = travelLists.get(i).getCordinates().trim();
+                        if(!latlong.trim().isEmpty()) {
+                            int comma = latlong.indexOf(",");
+                            String lat = latlong.substring(0,comma);
+                            String lon = latlong.substring(comma+1);
+                            if(!lat.contains(",") && !lon.contains(","))
+                                coordinates.add(new Coordinates(Double.valueOf(lat), Double.valueOf(lon)));
+                        }
                     }
                     mvpView.setCordinateList(coordinates);
                 }

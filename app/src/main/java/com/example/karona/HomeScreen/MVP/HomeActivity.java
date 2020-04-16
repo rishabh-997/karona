@@ -16,11 +16,13 @@ import com.example.karona.Essential.MVP.EssentialActivity;
 import com.example.karona.HomeScreen.MainSliderAdapter;
 import com.example.karona.HomeScreen.Model.Coordinates;
 import com.example.karona.HomeScreen.PicassoImageLoadingService;
+import com.example.karona.TravelHistory.MapsActivity;
 import com.example.karona.databinding.ActivityHomeBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.Serializable;
 import java.util.List;
 
 import ss.com.bannerslider.Slider;
@@ -74,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.view
     }
 
     @Override
-    public void setCordinateList(List<Coordinates> coordinates) {
+    public void setCordinateList(final List<Coordinates> coordinates) {
         client.getLastLocation().addOnSuccessListener(HomeActivity.this,new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
@@ -83,9 +85,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.view
                     user_long = location.getLongitude();
 
                     binding.progressBar.setVisibility(View.GONE);
-                    Intent intent = new Intent(HomeActivity.this, EssentialActivity.class);
-                    //pass user
-                    //pass coordinates list
+                    Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+                    intent.putExtra("user_lat",user_lat);
+                    intent.putExtra("user_long",user_long);
+                    intent.putExtra("all_cordiantes",(Serializable) coordinates);
+                    startActivity(intent);
                 }
             }
         });

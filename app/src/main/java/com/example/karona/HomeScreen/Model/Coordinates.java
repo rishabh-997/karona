@@ -1,6 +1,8 @@
 package com.example.karona.HomeScreen.Model;
 
-public class Coordinates
+import java.io.Serializable;
+
+public class Coordinates implements Serializable
 {
     Double latitude,longitude;
 
