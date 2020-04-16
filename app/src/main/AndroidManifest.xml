@@ -12,9 +12,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/main_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/main_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
@@ -35,10 +35,12 @@
         </activity>
         <activity
             android:name=".HomeScreen.MVP.HomeActivity"
-            android:label="Home" />
+            android:label="Covid-19 Tracker" />
         <activity
             android:name=".Essential.MVP.EssentialActivity"
-            android:label="Essentials" />
+            android:label="Essentials and Resources" />
+        <activity android:name=".Charts.MVP.ChartActivity"
+            android:label="Charts Activity"/>
     </application>
 
 </manifest>

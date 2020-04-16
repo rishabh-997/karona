@@ -35,6 +35,9 @@ public class EssentialActivity extends AppCompatActivity implements EssentialCon
         setContentView(binding.getRoot());
         presenter = new EssentialPresenter(this);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
@@ -110,5 +113,11 @@ public class EssentialActivity extends AppCompatActivity implements EssentialCon
     public void onContactClicked(int position) {
         Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(filteredList.get(position).getContact()));
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

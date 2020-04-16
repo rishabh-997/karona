@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,11 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.karona.Charts.MVP.ChartActivity;
 import com.example.karona.Essential.MVP.EssentialActivity;
 import com.example.karona.HomeScreen.MainSliderAdapter;
 import com.example.karona.HomeScreen.Model.Coordinates;
 import com.example.karona.HomeScreen.PicassoImageLoadingService;
 import com.example.karona.TravelHistory.MapsActivity;
+import com.example.karona.Utility.Utils;
 import com.example.karona.databinding.ActivityHomeBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -65,6 +68,21 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.view
                     binding.progressBar.setVisibility(View.VISIBLE);
                     presenter.getLocations();
                 }
+            }
+        });
+
+        binding.chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, ChartActivity.class));
+            }
+        });
+
+        binding.infection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.covid19india.org/"));
+                startActivity(intent);
             }
         });
     }

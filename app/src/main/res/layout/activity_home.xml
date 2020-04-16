@@ -31,7 +31,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_alignParentStart="true"
-        android:text="Infections"
+        android:text="Total Infections"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline32"
         app:layout_constraintHorizontal_bias="0.5"
