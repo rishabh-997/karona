@@ -5,74 +5,77 @@
     android:layout_height="match_parent">
 
     <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/progressBar"
         style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:indeterminate="true"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/essential"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="12dp"
         android:text="Essentials"
         app:layout_constraintBottom_toTopOf="@+id/infection"
         app:layout_constraintEnd_toStartOf="@+id/guideline32"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner_slider"
-        android:layout_alignParentLeft="true" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/infection"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:text="Total Infections"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/news_view"
         app:layout_constraintEnd_toStartOf="@+id/guideline32"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/essential"
-        android:layout_alignParentLeft="true" />
+        app:layout_constraintTop_toBottomOf="@+id/essential" />
 
     <Button
         android:id="@+id/travel"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="Travel History"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_alignParentRight="true"
+        android:text="Check Diagnostics"
+        app:layout_constraintBottom_toBottomOf="@id/infection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline32"
-        app:layout_constraintTop_toBottomOf="@+id/chart"
-        android:layout_alignParentRight="true" />
+        app:layout_constraintTop_toBottomOf="@+id/chart" />
 
     <Button
         android:id="@+id/chart"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
         android:text="Charts"
         app:layout_constraintBottom_toTopOf="@+id/travel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline32"
-        app:layout_constraintTop_toBottomOf="@+id/banner_slider"
-        android:layout_alignParentRight="true" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ss.com.bannerslider.Slider
-        android:id="@+id/banner_slider"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_view"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progressBar"
-        app:slider_interval="5000" />
+        app:layout_constraintTop_toBottomOf="@id/infection" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline32"

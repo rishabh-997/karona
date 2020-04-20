@@ -1,4 +1,4 @@
-package com.example.karona.Utility;
+package com.example.karona.Utility.covid_gov;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

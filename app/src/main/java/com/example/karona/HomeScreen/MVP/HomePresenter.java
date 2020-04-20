@@ -1,10 +1,14 @@
 package com.example.karona.HomeScreen.MVP;
 
 import com.example.karona.HomeScreen.Model.Coordinates;
+import com.example.karona.HomeScreen.Model.NewsList;
+import com.example.karona.HomeScreen.Model.NewsResponse;
 import com.example.karona.HomeScreen.Model.TravelList;
 import com.example.karona.HomeScreen.Model.TravelResponse;
-import com.example.karona.Utility.ClientAPI;
-import com.example.karona.Utility.Utils;
+import com.example.karona.Utility.covid_gov.ClientAPI;
+import com.example.karona.Utility.covid_gov.Utils;
+import com.example.karona.Utility.covid_news.ClientAPI_news;
+import com.example.karona.Utility.covid_news.Utils_news;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +19,12 @@ import retrofit2.Response;
 
 public class HomePresenter implements HomeContract.presenter
 {
-    List<TravelList> travelLists = new ArrayList<>();
-    HomeContract.view mvpView;
-    ClientAPI clientAPI = Utils.getClientAPI();
+    private List<TravelList> travelLists = new ArrayList<>();
+    private HomeContract.view mvpView;
+    private ClientAPI clientAPI = Utils.getClientAPI();
+    private ClientAPI_news newsAPI = Utils_news.getClientAPI();
 
-    List<Coordinates> coordinates = new ArrayList<>();
+    private List<Coordinates> coordinates = new ArrayList<>();
 
     public HomePresenter(HomeContract.view mvpView) {
         this.mvpView = mvpView;
@@ -50,6 +55,29 @@ public class HomePresenter implements HomeContract.presenter
 
             @Override
             public void onFailure(Call<TravelResponse> call, Throwable t) {
+                mvpView.toast(t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void getNews() {
+        newsAPI.getNews().enqueue(new Callback<NewsResponse>() {
+            @Override
+            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+                if(response.isSuccessful()) {
+                    if(response.body().getStatus().equals("ok")) {
+                        mvpView.showNews(response.body().getNewsLists());
+                    }
+                    else
+                        mvpView.toast("Error fetching news");
+                } else {
+                    mvpView.toast(response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NewsResponse> call, Throwable t) {
                 mvpView.toast(t.getMessage());
             }
         });

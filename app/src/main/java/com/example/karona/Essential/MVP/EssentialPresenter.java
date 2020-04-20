@@ -2,8 +2,8 @@ package com.example.karona.Essential.MVP;
 
 import com.example.karona.Essential.Model.EssentialList;
 import com.example.karona.Essential.Model.EssentialResponse;
-import com.example.karona.Utility.ClientAPI;
-import com.example.karona.Utility.Utils;
+import com.example.karona.Utility.covid_gov.ClientAPI;
+import com.example.karona.Utility.covid_gov.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

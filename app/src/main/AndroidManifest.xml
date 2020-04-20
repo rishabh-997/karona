@@ -9,6 +9,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
 
     <application
         android:allowBackup="true"
@@ -41,6 +42,8 @@
             android:label="Essentials and Resources" />
         <activity android:name=".Charts.MVP.ChartActivity"
             android:label="Charts Activity"/>
+        <activity android:name=".HomeScreen.MVP.WebFragment" />
+        <activity android:name=".Aptos.MVP.CoronaActivity" />
     </application>
 
 </manifest>

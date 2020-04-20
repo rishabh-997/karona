@@ -1,11 +1,8 @@
 package com.example.karona.Charts.MVP;
 
 import com.example.karona.Charts.Model.CHartResponse;
-import com.example.karona.HomeScreen.Model.TravelList;
-import com.example.karona.Utility.ClientAPI;
-import com.example.karona.Utility.Utils;
-
-import java.util.List;
+import com.example.karona.Utility.covid_gov.ClientAPI;
+import com.example.karona.Utility.covid_gov.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;

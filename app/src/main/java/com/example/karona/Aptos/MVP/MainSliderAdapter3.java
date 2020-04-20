@@ -1,12 +1,10 @@
-package com.example.karona.HomeScreen;
+package com.example.karona.Aptos.MVP;
 
 import com.example.karona.R;
-
 import ss.com.bannerslider.adapters.SliderAdapter;
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder;
 
-public class MainSliderAdapter extends SliderAdapter {
-
+public class MainSliderAdapter3 extends SliderAdapter {
 
     @Override
     public int getItemCount() {

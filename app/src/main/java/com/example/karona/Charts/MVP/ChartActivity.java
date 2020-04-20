@@ -87,6 +87,12 @@ public class ChartActivity extends AppCompatActivity implements ChartContract.vi
     @Override
     public void showChart(List<ChartList> chart) {
         chartLists = chart;
+        values.clear();
+        for (int i = 1; i <= chartLists.size(); i++) {
+            int cases = Integer.parseInt(chartLists.get(i - 1).getTotalConfirmed());
+            values.add(new Entry(i, cases));
+        }
+        renderData(values);
     }
 
     public void renderData(ArrayList<Entry> values) {
