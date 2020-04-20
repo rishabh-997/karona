@@ -20,15 +20,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
 
 import ss.com.bannerslider.Slider;
 
 public class CoronaActivity extends AppCompatActivity implements CoronaContract.view {
     CoronaContract.presenter presenter;
-    //String image_url = "http://10.42.0.1:5000/get-image/output_heat_map.png";
 
     TextView sendurl;
     TextView result, select_image, generatereport, report;
+    ImageView selected_image, selected_image_stage2;
     ProgressBar progressBar;
     View overlay;
     Slider slider;
@@ -51,12 +52,17 @@ public class CoronaActivity extends AppCompatActivity implements CoronaContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aptos);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         presenter = new CoronaPresenter(this);
 
         sendurl = findViewById(R.id.sendurl);
         result = findViewById(R.id.result);
         progressBar = findViewById(R.id.progressbar);
         select_image = findViewById(R.id.select_image);
+        selected_image = findViewById(R.id.selected_image);
+        selected_image_stage2 = findViewById(R.id.selected_image_stage2);
         overlay = findViewById(R.id.overlay);
         slider = findViewById(R.id.banner_slider1);
         stage1 = findViewById(R.id.stage1);
@@ -92,22 +98,13 @@ public class CoronaActivity extends AppCompatActivity implements CoronaContract.
             }
         });
 
-        stage2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stage1.setImageResource(R.drawable.completed_circle);
-                select_image.setVisibility(View.GONE);
-                sendurl.setVisibility(View.VISIBLE);
-            }
-        });
-
         generatereport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stage2.setImageResource(R.drawable.completed_circle);
                 generatereport.setVisibility(View.GONE);
                 sendurl.setVisibility(View.GONE);
                 result.setVisibility(View.GONE);
+                selected_image_stage2.setVisibility(View.GONE);
                 stage2.setClickable(false);
 
                 progressBar.setVisibility(View.VISIBLE);
@@ -131,20 +128,20 @@ public class CoronaActivity extends AppCompatActivity implements CoronaContract.
         overlay.setVisibility(View.GONE);
         result.setVisibility(View.VISIBLE);
         generatereport.setVisibility(View.VISIBLE);
+        sendurl.setVisibility(View.GONE);
+        stage2.setImageResource(R.drawable.completed_circle);
+        selected_image.setVisibility(View.GONE);
+        selected_image_stage2.setVisibility(View.VISIBLE);
         int severity = body.getNum();
 
-        result.setText("The blindness level is " + severity + " %");
+        result.setText("The chances of you having corona is  " + severity + " %");
 
-        if (severity <= 20) {
-            final_report = "Your eyes are safe";
-        } else if (severity <= 40) {
-            final_report = "You are Mildly Blind";
+        if (severity <= 40) {
+            final_report = "Stay Home !!! Stay Safe !!!";
         } else if (severity <= 60) {
-            final_report = "Your Eyes are Moderately Blind";
-        } else if (severity <= 80) {
-            final_report = "Your eyes have incurred a severe blindness and you need to consult a doctor immediately";
+            final_report = "Quarantine yourself and consult a doctor immediately";
         } else {
-            final_report = "Your eyes are growing or multiply by rapidly producing new tissue, parts, cells, or offspring\n\n You need to visit an expert immediately";
+            final_report = "You have high risk of having contaminated\n by Covid-19 virus.\n Contact the officals immediately and avoid contact with anyone.";
         }
     }
 
@@ -175,10 +172,20 @@ public class CoronaActivity extends AppCompatActivity implements CoronaContract.
                             Uri data = uri;
                             doc_url = data.toString();
                             link = doc_url;
+                            selected_image.setVisibility(View.VISIBLE);
+                            Picasso.get()
+                                    .load(link)
+                                    .into(selected_image);
+                            Picasso.get()
+                                    .load(link)
+                                    .into(selected_image_stage2);
+
                             Toast.makeText(CoronaActivity.this, "File uploaded on server...\n you can Proceed to stage 2", Toast.LENGTH_SHORT).show();
                             overlay.setVisibility(View.GONE);
                             progressBar.setVisibility(View.GONE);
                             sendurl.setVisibility(View.VISIBLE);
+                            select_image.setVisibility(View.GONE);
+                            stage1.setImageResource(R.drawable.completed_circle);
                         }
                     });
                 }
@@ -186,6 +193,12 @@ public class CoronaActivity extends AppCompatActivity implements CoronaContract.
         } else {
             Toast.makeText(this, "did not selected the image", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
 
