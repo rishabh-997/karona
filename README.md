@@ -22,3 +22,4 @@ Clone this repository and build the project. Add you google api key to access ma
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Help needed from contributors to make it a great success.
