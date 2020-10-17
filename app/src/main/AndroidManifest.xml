@@ -41,7 +41,7 @@
             android:name=".Essential.MVP.EssentialActivity"
             android:label="Essentials and Resources" />
         <activity android:name=".Charts.MVP.ChartActivity"
-            android:label="Charts Activity"/>
+            android:label="Charts Data"/>
         <activity android:name=".HomeScreen.MVP.WebFragment"
             android:label="Total Infections"/>
         <activity android:name=".Aptos.MVP.CoronaActivity"
