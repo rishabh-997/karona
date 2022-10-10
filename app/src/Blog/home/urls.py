@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 from .views import UpdatePostView
 import notifications.urls
-
+#agarwal randi
 urlpatterns = [
 #     blogs
     path("", views.blogs, name="blogs"),
