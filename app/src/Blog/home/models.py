@@ -16,6 +16,7 @@ class Notification(AbstractNotification):
     class Meta(AbstractNotification.Meta):
         abstract = False
     #isjjs
+    #randi vaya
 
 
 class Profile(models.Model):
