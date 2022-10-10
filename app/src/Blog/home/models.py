@@ -15,6 +15,7 @@ class Notification(AbstractNotification):
     
     class Meta(AbstractNotification.Meta):
         abstract = False
+    #isjjs
 
 
 class Profile(models.Model):
